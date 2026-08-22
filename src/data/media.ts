@@ -16,6 +16,8 @@ export const projectsPageHeaderImage = heroImage;
 export const whyChooseUsPageHeaderImage = heroImage;
 export const contactPageHeaderImage = ctaBackgroundImage;
 
+export const logoIcon = "/images/brand/triaxis-icon.png";
+
 export interface Certification {
   title: string;
   subtitle: string;

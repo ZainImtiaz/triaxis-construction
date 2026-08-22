@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Menu, X, Landmark } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useScrollPosition } from "../hooks/useScrollPosition";
 import { Button } from "./Button";
 import { cx } from "../lib/cx";
+import { logoIcon } from "../data/media";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -44,7 +45,7 @@ export function Navbar() {
           className="flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight text-white"
           onClick={() => setMenuOpen(false)}
         >
-          <Landmark className="h-7 w-7 text-brand-light" aria-hidden="true" />
+          <img src={logoIcon} alt="" className="h-8 w-auto" aria-hidden="true" />
           <span>
             TriAxis <span className="font-normal text-white/80">Construction</span>
           </span>

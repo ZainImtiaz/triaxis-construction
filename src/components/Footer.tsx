@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Globe, Camera, Briefcase, Send, Landmark } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Camera, Briefcase, Send } from "lucide-react";
 import { services } from "../data/services";
+import { logoIcon } from "../data/media";
 
 const QUICK_LINKS = [
   { label: "Home", to: "/" },
@@ -26,7 +27,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:px-10">
         <div>
           <Link to="/" className="flex items-center gap-2.5 font-display text-lg font-extrabold text-white">
-            <Landmark className="h-7 w-7 text-brand-light" aria-hidden="true" />
+            <img src={logoIcon} alt="" className="h-8 w-auto" aria-hidden="true" />
             <span>
               TriAxis <span className="font-normal text-white/80">Construction</span>
             </span>

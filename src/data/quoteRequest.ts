@@ -14,21 +14,24 @@ export async function submitQuoteRequest(values: QuoteFormValues): Promise<Quote
     );
   }
 
+  // FormData (not JSON) so the browser sends a CORS-safelisted content type
+  // and skips the preflight request — Web3Forms' AJAX endpoint doesn't
+  // respond to preflight OPTIONS requests.
+  const formData = new FormData();
+  formData.append("access_key", accessKey);
+  formData.append("subject", `New quote request from ${values.fullName}`);
+  formData.append("from_name", "TriAxis Construction — Website");
+  formData.append("name", values.fullName);
+  formData.append("email", values.email);
+  formData.append("phone", values.phone);
+  formData.append("project_type", values.projectType);
+  formData.append("estimated_budget", values.estimatedBudget);
+  formData.append("project_location", values.projectLocation);
+  formData.append("message", values.message);
+
   const res = await fetch(WEB3FORMS_ENDPOINT, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      access_key: accessKey,
-      subject: `New quote request from ${values.fullName}`,
-      from_name: "TriAxis Construction — Website",
-      name: values.fullName,
-      email: values.email,
-      phone: values.phone,
-      project_type: values.projectType,
-      estimated_budget: values.estimatedBudget,
-      project_location: values.projectLocation,
-      message: values.message,
-    }),
+    body: formData,
   });
 
   const data: unknown = await res.json();

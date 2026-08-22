@@ -31,3 +31,6 @@ logo.jpg.jpeg
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
+.env*
